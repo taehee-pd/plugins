@@ -1,0 +1,21 @@
+{
+  "name": "mercury",
+  "version": "1.0.0",
+  "description": "Read balances, transactions, statements, and cards.",
+  "author": {
+    "name": "Cursor",
+    "email": "plugins@cursor.com"
+  },
+  "homepage": "https://docs.mercury.com/docs/what-is-mercury-mcp",
+  "repository": "https://github.com/cursor/plugins",
+  "license": "MIT",
+  "keywords": [
+    "mercury",
+    "banking",
+    "finance",
+    "transactions",
+    "statements",
+    "mcp"
+  ],
+  "mcpServers": "./mcp.json"
+}

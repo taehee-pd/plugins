@@ -14,11 +14,6 @@
       "description": "Skill mapping, practice plans, and learning retrospectives."
     },
     {
-      "name": "continual-learning",
-      "source": "./continual-learning",
-      "description": "Incremental transcript-driven memory updates for AGENTS.md using high-signal bullet points only."
-    },
-    {
       "name": "cursor-team-kit",
       "source": "./cursor-team-kit",
       "description": "Internal team workflows for CI, code review, shipping, local automation, and verification."
@@ -32,11 +27,6 @@
       "name": "create-plugin",
       "source": "./create-plugin",
       "description": "Scaffold and validate new agent plugins."
-    },
-    {
-      "name": "ralph-loop",
-      "source": "./ralph-loop",
-      "description": "Iterative self-referential AI loops using the Ralph Wiggum technique."
     },
     {
       "name": "agent-compatibility",
@@ -77,11 +67,6 @@
       "name": "grok-voice",
       "source": "./grok-voice",
       "description": "Add Grok voice to an app: realtime speech-to-speech, speech-to-text dictation, text-to-speech read-aloud, and a log-driven fix loop for voice sessions."
-    },
-    {
-      "name": "advisor",
-      "source": "./advisor",
-      "description": "Consult a stronger model before major decisions, when stuck, and before declaring done."
     },
     {
       "name": "gmail",
