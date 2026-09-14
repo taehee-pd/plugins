@@ -37,6 +37,18 @@ const toRelative = (source) =>
     ? `./${source}`
     : source;
 
+// mcpServers may be a path, an inline config object, or an array of either
+// (schemas/plugin.schema.json); Claude accepts the same shapes. Paths to
+// missing files are dropped so they don't fail Claude validation.
+const claudeMcpServers = (pluginDir, value) => {
+  const keep = (item) => typeof item !== "string" || existsSync(resolve(pluginDir, item));
+  if (Array.isArray(value)) {
+    const items = value.filter(keep);
+    return items.length > 0 ? items : undefined;
+  }
+  return value && keep(value) ? value : undefined;
+};
+
 const cursorMarketplace = loadJSON(resolve(root, ".cursor-plugin/marketplace.json"));
 const plugins = cursorMarketplace.plugins.filter((entry) => !EXCLUDED_PLUGINS.has(entry.name));
 
@@ -51,9 +63,8 @@ for (const entry of plugins) {
 
   // Cursor names the MCP file mcp.json; Claude only auto-discovers .mcp.json,
   // so point at it explicitly. skills/ and agents/ use Claude's default paths.
-  if (cursorManifest.mcpServers && existsSync(resolve(pluginDir, cursorManifest.mcpServers))) {
-    claudeManifest.mcpServers = cursorManifest.mcpServers;
-  }
+  const mcpServers = claudeMcpServers(pluginDir, cursorManifest.mcpServers);
+  if (mcpServers !== undefined) claudeManifest.mcpServers = mcpServers;
 
   writeJSON(resolve(pluginDir, ".claude-plugin/plugin.json"), claudeManifest);
 }
